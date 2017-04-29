@@ -15,10 +15,10 @@ public class LoginController {
 
     @RequestMapping("/user/create")
     @ResponseBody
-    public String create(String email, String name) {
+    public String create(String email, String name, String password) {
         String userId = "";
         try {
-            User user = new User(email, name);
+            User user = new User(email, name, password);
             userRepository.save(user);
             userId = String.valueOf(user.getId());
         }
@@ -27,5 +27,7 @@ public class LoginController {
         }
         return "User succesfully created with id = " + userId;
     }
+
+    
 
 }
